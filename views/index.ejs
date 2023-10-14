@@ -1,0 +1,84 @@
+<%- include("partials/header.ejs") %>
+    <nav class="navbar navbar-expand-lg bg-nav">
+        <div class="container-fluid " id="navbarContent">
+            <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ">
+
+                    <a class="nav-link seg" aria-current="page" href="/">
+                        <span class="material-symbols-outlined">
+Today
+</span> Today's task</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link seg " aria-current="page" href="/work"><span class="material-symbols-outlined">
+work_history
+</span>Work task</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="date text-center">
+            <h3>
+                <%-new Date().toLocaleString('en-us', { dateStyle: "full" })%>
+            </h3>
+        </div>
+        <div class="mytitle text-center">
+            <h2>TO-DO'S</h2>
+        </div>
+        <div class="mx-auto my-list col-6 align-items-center">
+            <form action="/submit" method="post">
+                <div class="input-group">
+                    <textarea name="td" class="form-control" aria-label="With textarea"></textarea>
+                    <span class="input-group-text"><button type="submit" class="btn btn-outline-<%= tagName %>"><span class="material-symbols-outlined">
+                add
+                </span></button>
+                    </span>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="mx-auto my-list col-6 align-items-center">
+            <% tds.forEach(td => { %>
+                <div class="my-list center alert alert-<%= tagName %>" role="alert">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheck">
+                        <p>
+                            <%= td %>
+                        </p>
+
+                    </div>
+                </div>
+                <% }) %>
+                    <script>
+                        let checkboxes = document.querySelectorAll('.form-check input[type="checkbox"]');
+                        var checked;
+                        checkboxes.forEach(checks => {
+                            let ck = checks;
+                            checked = !(checks.getAttribute("checked") == null || checks.getAttribute("checked") == false);
+                            console.log("before clicked " + checked);
+                            checks.addEventListener("click", (e) => {
+                                checked = !checked;
+                                console.log("after clicked" + checked);
+                                if (checked) {
+                                    checks.nextSibling.nextElementSibling.style.textDecoration = "line-through";
+                                    checks.setAttribute("checked", "");
+                                    console.log("striked and ticked" + checked);
+
+
+                                } else {
+                                    checks.nextSibling.nextElementSibling.style.textDecoration = "none";
+                                    console.log("unstriked and ticked" + checked);
+                                    if (checks.getAttribute("checked")) {
+                                        checks.removeAttribute("checked");
+                                    }
+                                }
+
+                            });
+                        });
+                    </script>
+        </div>
+    </main>
+    <%- include("partials/footer.ejs") %>

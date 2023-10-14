@@ -1,0 +1,53 @@
+a {
+    color: #213555 !important;
+}
+
+.date h3 {
+    margin: auto;
+    justify-content: center;
+    background-attachment: #213555;
+}
+
+.mytitle h2 {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 84px;
+    text-align: center;
+}
+
+.seg {
+    color: #213555 !important;
+    text-decoration-color: #213555 !important;
+}
+
+.link {
+    color: #F1EFEF;
+}
+
+body {
+    background-color: #F1EFEF;
+}
+
+.mylist {
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (min-width: 1030px) {
+    .mylist {
+        margin-left: 20% !important;
+    }
+}
+
+@media only screen and (min-width: 1030px) {
+    .your_class {
+        margin-top: 25% !important;
+    }
+}
+
+#navbarContent a i ul li {
+    color: #213555;
+}
+
+.checked p {
+    text-decoration: line-through;
+}

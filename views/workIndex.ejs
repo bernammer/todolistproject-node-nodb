@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") %>
+    <nav class="navbar navbar-expand-lg bg-nav">
+        <div class="container-fluid " id="navbarContent">
+            <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ">
+
+                    <a class="nav-link seg" aria-current="page" href="/">
+                        <span class="material-symbols-outlined">
+Today
+</span> Today's task</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link seg " aria-current="page" href="/work"><span class="material-symbols-outlined">
+work_history
+</span>Work task</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="date text-center">
+            <h3>
+                <%-new Date().toLocaleString('en-us', { dateStyle: "full" })%>
+            </h3>
+        </div>
+        <div class="mytitle text-center">
+            <h2>TO-DO'S</h2>
+        </div>
+        <div class="mx-auto my-list col-6 align-items-center">
+            <!-- <label for="inputPassword" class="col-sm-2 col-form-label">Password</label> -->
+            <form action="/submitWork" method="post">
+                <div class="input-group">
+                    <textarea name="td" class="form-control" aria-label="With textarea"></textarea>
+                    <span class="input-group-text"><button type="submit" class="btn btn-outline-<%= tagName %>"><span class="material-symbols-outlined">
+                add
+                </span></button>
+                    </span>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="mx-auto my-list col-6 align-items-center">
+            <% wtds.forEach(wtd => { %>
+                <div class="my-list center alert alert-<%= tagName %>" role="alert">
+                    <%= wtd %>
+                </div>
+                <% }) %>
+                    <!-- <div class="my-list center alert alert-<%= tagName %>" role="alert">
+                A simple primary alert—check it out!
+                <p class="placeholder-glow">
+                    <span class="placeholder col-12"></span>
+                </p>
+            </div>
+             -->
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
